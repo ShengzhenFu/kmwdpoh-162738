@@ -1,0 +1,6 @@
+version: 2.1
+orbs:
+  # https://circleci.com/developer/orbs/orb/circleci/kubernetes
+  kubernetes: circleci/kubernetes@0.12.0
+  # https://circleci.com/developer/orbs/orb/circleci/go
+  go: circleci/go@1.7.0
