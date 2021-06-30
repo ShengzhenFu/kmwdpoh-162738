@@ -4,3 +4,46 @@ orbs:
   kubernetes: circleci/kubernetes@0.12.0
   # https://circleci.com/developer/orbs/orb/circleci/go
   go: circleci/go@1.7.0
+
+jobs:
+  build-test-and-push:
+    docker:
+      - image: cimg/go:1.15
+    # checkout code and unit test
+    steps:
+      - checkout
+      - go/load-cache
+      - go/mod-download
+      - go/save-caches
+      - go/test:
+          covermode: atomic
+          failfast: true
+          race: trues
+    # build image
+    - run:
+        name: login registry
+        command: |
+          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/h0h5s3n6
+
+    - run:
+        name: Build images
+        command: |
+          # build chain-main image
+          # get first 7 digit of the commit hash of the PR
+          SHORT_HASH=${CIRCLE_SHA1:0:7}
+          IMAGE_TAG=public.ecr.aws/h0h5s3n6/cryptocom/chain-main:${SHORT_HASH}
+          docker build -t $IMAGE_TAG --network host .
+    # push image to ecr
+    - run:
+          name: Push image to registry
+          command: |
+            # push  image
+            # get 7 digit of the commit hash of the PR
+            SHORT_HASH=${CIRCLE_SHA1:0:7} 
+            IMAGE_TAG=public.ecr.aws/h0h5s3n6/cryptocom/chain-main:${SHORT_HASH}
+            docker push $IMAGE_TAG
+
+workflows:
+  main:
+    jobs:
+      - build-test-and-push

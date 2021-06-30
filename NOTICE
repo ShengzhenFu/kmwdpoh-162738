@@ -1,0 +1,25 @@
+Crypto.org Chain
+Copyright 2021, CRO Protocol Labs ("Crypto.org")
+Copyright 2018 - 2020, Foris Limited ("Crypto.com"). 
+
+This project contains portions of code derived from the following libraries:
+
+* Starport
+ * Copyright: Copyright (c) 2020 All in Bits, Inc
+ * License: Apache License 2.0
+ * Repository: https://github.com/tendermint/starport
+
+* Cosmos SDK
+ * Copyright: Copyright (c) 2016-2020 All in Bits, Inc
+ * License: Apache License 2.0
+ * Repository: https://github.com/cosmos/cosmos-sdk
+
+* bitset
+ * Copyright (c) 2014 Will Fitzgerald.
+ * License: BSD 3-Clause "New" or "Revised" License
+ * Repository: https://github.com/willf/bitset
+
+* irismod
+ * Copyright (c) 2016-2021 Shanghai Bianjie AI Technology Inc.
+ * License: Apache License 2.0
+ * Repository: https://github.com/irisnet/irismod
