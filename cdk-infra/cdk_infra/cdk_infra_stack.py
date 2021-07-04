@@ -2,7 +2,6 @@ from aws_cdk import core as cdk
 
 from aws_cdk import (
     aws_ec2 as ec2,
-    aws_ssm as ssm,
     aws_iam as iam,
     aws_eks as eks,
 )

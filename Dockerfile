@@ -39,5 +39,9 @@ WORKDIR $CHAIN_MAIN
 # Copy over binaries from the build-env
 COPY --from=build-env /go/bin/chain-maind /usr/bin/chain-maind
 
+RUN mkdir -p $CHAIN_MAIN/.chain-maind/config
+COPY genesis.json $CHAIN_MAIN/.chain-maind/config/genesis.json
+
+
 # Run chain-maind by default, omit entrypoint to ease using container with chain-maincli
 CMD ["chain-maind"]
