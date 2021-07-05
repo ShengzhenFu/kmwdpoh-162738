@@ -6,7 +6,7 @@ This section contains the AWS CDK code written in Typescript. For more informati
 
 How to find out EC2 AMI id of the 1-click node
 
-![ami id](https://github.com/ShengzhenFu/kmwdpoh-162738/raw/main/images/ec2-ami-id.jpg)
+![ami-id](https://github.com/ShengzhenFu/kmwdpoh-162738/raw/main/images/ec2-ami-id.jpg)
 
 
 
@@ -70,5 +70,6 @@ And follow the steps of how to run testnet , you will be able to get testnet up 
 
 ```bash
 $ cdk destroy
+## this will remove all the resources has been created above like ec2, subnets, security groups, etc
 ```
 
