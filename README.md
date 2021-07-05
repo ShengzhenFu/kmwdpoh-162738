@@ -129,3 +129,7 @@ $ cdk destroy
 ## this will remove all the resources has been created above like ec2, subnets, security groups, etc
 ```
 
+resource destroyed
+
+![cdk destroy](https://github.com/ShengzhenFu/kmwdpoh-162738/raw/main/images/ec2-destroy.jpg)
+
