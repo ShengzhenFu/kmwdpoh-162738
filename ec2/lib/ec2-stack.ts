@@ -9,7 +9,7 @@ export class Ec2Stack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    // The code that defines aws stack
     const cryptoVpc = new ec2.Vpc(this, 'vpc-crypto',{
       cidr: "10.1.2.0/24",
       maxAzs: 1,  // suggest >=2 for AZ redundant
@@ -17,13 +17,13 @@ export class Ec2Stack extends cdk.Stack {
       enableDnsSupport: true,
       natGateways: 1,
       subnetConfiguration: [
-        {
-          name: "public-subnet",  // public subnet
+        { // public subnet of the vpc
+          name: "public-subnet",  
           cidrMask: 26,
           subnetType: SubnetType.PUBLIC,
         },
-        {
-          name: "private-subnet",  // private subnet
+        { // private subnet of the vpc
+          name: "private-subnet",  
           cidrMask: 26,
           subnetType: SubnetType.PRIVATE,
         }
