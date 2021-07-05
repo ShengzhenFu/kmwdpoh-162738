@@ -83,7 +83,7 @@ export class Ec2Stack extends cdk.Stack {
     securityGroup: securityGroup,
     instanceName: 'crypto-instance-1',
     instanceType: ec2.InstanceType.of( // t2.micro has free tier usage in aws
-      ec2.InstanceClass.T2,
+      ec2.InstanceClass.T2,  // might change to m5a.large for testnet
       ec2.InstanceSize.MICRO
     ),
     machineImage: ec2.MachineImage.genericLinux({
