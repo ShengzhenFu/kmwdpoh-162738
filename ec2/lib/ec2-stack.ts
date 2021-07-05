@@ -76,7 +76,7 @@ export class Ec2Stack extends cdk.Stack {
 
   
 
-  // Finally lets provision our ec2 instance
+  // provisions ec2 instance
   const instance = new ec2.Instance(this, 'crypto-instance-1', {
     vpc: cryptoVpc,
     role: role,
