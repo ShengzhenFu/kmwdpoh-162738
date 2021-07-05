@@ -1,6 +1,10 @@
 # kmwdpoh-162738
 
-This section contains the AWS CDK code written in Typescript. For more information on using the CDK in Typescript, please see the [Developer Guide](https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-typescript.html).
+This section contains the AWS CDK code written in Typescript. 
+
+For more information about CDK, please see the [CDK prerequisites](https://docs.aws.amazon.com/cdk/latest/guide/work-with.html#work-with-prerequisites)
+
+For more information on using the CDK in Typescript, please see the [Developer Guide](https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-typescript.html). 
 
 
 
