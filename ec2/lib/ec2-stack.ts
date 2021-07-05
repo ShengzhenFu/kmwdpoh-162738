@@ -87,16 +87,15 @@ export class Ec2Stack extends cdk.Stack {
       ec2.InstanceSize.MICRO
     ),
     machineImage: ec2.MachineImage.genericLinux({
-      'us-west-2': 'ami-0a6250f2d58bf49ba',
-      'us-east-1': 'ami-0a1e6e1045672988e'
+      'us-west-2': 'ami-0a6250f2d58bf49ba',  // ami id of 1-click node in us-west-2
+      'us-east-1': 'ami-0a1e6e1045672988e'   // ami id of 1-click node in us-east-1
     }) ,
     vpcSubnets: {subnetType: ec2.SubnetType.PUBLIC},
     keyName: 'crypto-instance-key', // we will create this in the console before we deploy
   })
 
-  // cdk lets us output prperties of the resources we create after they are created
-  // we want the ip address of this new instance so we can ssh into it later
-  new cdk.CfnOutput(this, 'simple-instance-1-output', {
+  // output prperties of ip address of this new instance, so we can ssh into it afterwards
+  new cdk.CfnOutput(this, 'crypto-instance-1-output', {
     value: instance.instancePublicIp
   })
   }
