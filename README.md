@@ -170,6 +170,13 @@ resource destroyed
 
 
 
+## Future work
+
+1. Migrate it to AWS EKS cluster 
+2. integrate CI/CD with Circleci
+3. Enable Cloudwatch logs
+4. Create dashboard in AWS for metric visualization
+
 
 
 Any questions or issue when run the code, feel free to create issue in the repo,
