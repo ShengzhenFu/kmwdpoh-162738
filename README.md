@@ -15,7 +15,63 @@ How to find out EC2 AMI id of the 1-click node
 1. provision an EC2 instance of *Crypto.org Chain 1-Click Node*
 2. SSH into the EC2 and start the test net
 
-## Provision EC2
+
+
+## Caution:
+
+  make sure in your AWS account there is no overlap with this Vpc cidr 10.1.2.0/24
+
+## Key implementations:
+
+Vpc & subnets
+
+```typescript
+const cryptoVpc = new ec2.Vpc(this, 'vpc-crypto',{
+      cidr: "10.1.2.0/24",
+      maxAzs: 1,  // suggest >=2 for AZ redundant
+      enableDnsHostnames: true,
+      enableDnsSupport: true,
+      natGateways: 1,
+      subnetConfiguration: [
+        {
+          name: "public-subnet",  // public subnet
+          cidrMask: 26,
+          subnetType: SubnetType.PUBLIC,
+        },
+        {
+          name: "private-subnet",  // private subnet
+          cidrMask: 26,
+          subnetType: SubnetType.PRIVATE,
+        }
+      ]
+    })
+```
+
+Ec2
+
+```typescript
+// provisions ec2 instance
+  const instance = new ec2.Instance(this, 'crypto-instance-1', {
+    vpc: cryptoVpc,
+    role: role,
+    securityGroup: securityGroup,
+    instanceName: 'crypto-instance-1',
+    instanceType: ec2.InstanceType.of( // t2.micro has free tier usage in aws
+      ec2.InstanceClass.T2,
+      ec2.InstanceSize.MICRO
+    ),
+    machineImage: ec2.MachineImage.genericLinux({
+      'us-west-2': 'ami-0a6250f2d58bf49ba',
+      'us-east-1': 'ami-0a1e6e1045672988e'
+    }) ,
+    vpcSubnets: {subnetType: ec2.SubnetType.PUBLIC},
+    keyName: 'crypto-instance-key', // we will create this in the console before we deploy
+  })
+```
+
+
+
+## Run the cdk code
 
 To run a CDK Typescript, execute the following:
 
