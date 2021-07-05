@@ -109,6 +109,10 @@ To run a CDK Typescript, execute the following:
 ```bash
 $ git clone git@github.com:ShengzhenFu/kmwdpoh-162738.git
 $ cd kmwdpoh-162738/ec2
+$ cat <<EOF >> .env
+AWS_ACCOUNT_ID=your aws account id
+AWS_ACCOUNT_REGION=us-west-2
+EOF 
 $ npm install -g aws-cdk
 $ npm install
 $ cdk deploy
