@@ -69,6 +69,33 @@ Ec2
   })
 ```
 
+Security group rules
+
+```typescript
+const securityGroup = new ec2.SecurityGroup(
+    this,
+    'crypto-instance-1-sg',
+    {
+      vpc: cryptoVpc,
+      allowAllOutbound: true, // will let your instance send outboud traffic
+      securityGroupName: 'crypto-instance-1-sg',
+    }
+  )
+
+  // setup security group to allow inbound traffic on specific ports
+  securityGroup.addIngressRule(
+    ec2.Peer.anyIpv4(),
+    ec2.Port.tcp(22),
+    'Allows SSH access from Internet'
+  )
+
+  securityGroup.addIngressRule(
+    ec2.Peer.anyIpv4(),
+    ec2.Port.tcp(26656),
+    'Allows port 26656 access from Internet'
+  )
+```
+
 
 
 ## Run the cdk code
