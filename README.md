@@ -160,3 +160,10 @@ resource destroyed
 
 ![cdk destroy](https://github.com/ShengzhenFu/kmwdpoh-162738/raw/main/images/ec2-destroy.jpg)
 
+
+
+
+
+Any questions or issue when run the code, feel free to create issue in the repo,
+
+or contact me at fushengzhen@163.com
